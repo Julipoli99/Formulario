@@ -1,6 +1,6 @@
 let formulario = document.querySelector(".formulario");
 let nombre = document.getElementById("nombre");
-let apellido = document.getElementById("apellido");
+let email = document.getElementById("email");
 let password = document.getElementById("password");
 let boton = document.getElementById("button");
 
@@ -8,7 +8,7 @@ let boton = document.getElementById("button");
 
 
 let errorNombreP = document.getElementById("errorNombreP");
-let errorApellidoP = document.getElementById("errorApellidoP");
+let errorEmailP = document.getElementById("errorEmailP");
 let errorPassP = document.getElementById("errorPassP");
 
 
@@ -16,8 +16,9 @@ formulario.addEventListener("submit", function(e){
     e.preventDefault()
 
     let errorName = [];
-    let errorApellido = [];
+    let errorEmail = [];
     let errorPass = [];
+    let regexEmail =  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
     let key = false;
 
@@ -35,22 +36,25 @@ formulario.addEventListener("submit", function(e){
         key = true;
     }
 
+
+
+
+    if (email.value === "" || email.value === null){
+        errorEmail.push("Ingresa un email");
+        key = true;
+    }
+
+    else if (!regexEmail.test(email.value)){
+        errorEmail.push("Ingresa un email válido");
+        key = true;
+    }
+
+
     else {
-        localStorage.setItem("nombreUsuario", nombre.value)
+        localStorage.setItem("usuarioEmail", email.value)
     }
 
-
-
-    if (apellido.value === "" || apellido.value === null){
-        errorApellido.push("Ingresa un apellido");
-        key = true;
-    }
-
-    else if (apellido.value.length < 3){
-        errorApellido.push("Ingresa un apellido mas largo");
-        key = true;
-    }
-
+    
 
 
 
@@ -73,7 +77,7 @@ formulario.addEventListener("submit", function(e){
 
     if (key){
         errorNombreP.innerHTML = errorName.join(" ");
-        errorApellidoP.innerHTML = errorApellido.join(" ");
+        errorEmailP.innerHTML = errorEmail.join(" ");
         errorPassP.innerHTML = errorPass.join(" ");
     }
 

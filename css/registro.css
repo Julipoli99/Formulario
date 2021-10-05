@@ -43,6 +43,12 @@ input[type = "password"]{
     border: none;
 }
 
+.icon{
+    min-width: 50px;
+    text-align: center;
+    color: #999;
+}
+
 
 .contenedor-input{
     margin-bottom: 15px;
