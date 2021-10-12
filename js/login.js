@@ -25,18 +25,25 @@ formulario.addEventListener("submit", function(e){
     }
 
     else if (email.value !== localStorage.getItem("usuarioEmail")){
-        errorEmail.push("El email que ingresaste no esta registrado");
+        errorEmail.push("El email que ingresaste no se encuentra registrado");
         key = true
     }
 
     
 
+
+    if (password.value === null || password.value === ""){
+        errorPass.push("Ingresa una contraseña");
+        key = true;
+    }
     
 
-    if (password.value !== localStorage.getItem("usuarioContraseña")){
+    else if (password.value !== localStorage.getItem("usuarioContraseña")){
         errorPass.push("Contraseña invalida");
         key = true;
     }
+
+    
     
     
 
