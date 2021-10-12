@@ -95,6 +95,15 @@ p{
         margin-top: 150px;
         border-radius: 2%;
     }
+
+    
+}
+
+
+@media(max-width: 800px){
+    span{
+        display: none;
+    }
 }
 
 
